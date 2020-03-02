@@ -1,0 +1,71 @@
+{
+    "app_text": [
+        {"appster_home_logo_text": "GoLogoLo"},
+        {"appster_home_new_work_button_text": "Create New Logo"},
+        {"appster_home_recent_work_heading_text": "Recent Logos"},
+        {"appster_edit_home_link_text": "GoLogoLo Home"},
+        {"appster_missing_root_div_error_text": "'appster_root_div' not found in DOM"},
+        
+        {"appster_yes_no_modal_prompt_text": "Are you sure you want to delete this logo?"},
+        {"appster_yes_no_modal_yes_button_text": "Yes"},
+        {"appster_yes_no_modal_no_button_text": "No"},
+        {"appster_yes_no_modal_footer_text": "The logo will not be retreivable."},
+        
+        {"appster_confirm_modal_prompt_text": "Illegal name, logo already exists with that name"},
+        {"appster_confirm_modal_ok_button_text": "Ok"},
+        {"appster_confirm_modal_footer_text": "Duplicate Name"},
+        
+        {"appster_text_input_modal_prompt_text": "Enter a name for your logo: "},
+        {"appster_text_input_modal_enter_button_text": "Enter"},
+        {"appster_text_input_modal_cancel_button_text": "Cancel"},
+        {"appster_text_input_modal_footer_text": "Creating New Logo"},
+
+        {"gologolo_edit_text_text": "Edit Text &#x270e;"},
+        {"gologolo_fontSize_text": "Font Size: "},
+        {"gologolo_textColor_text": "Text Color: "},
+        {"gologolo_backgroundColor_text": "Background Color: "},
+        {"gologolo_borderColor_text": "Border Color: "},
+        {"gologolo_borderRadius_text": "Border Radius: "},
+        {"gologolo_borderThickness_text": "Border Thickness: "},
+        {"gologolo_padding_text": "Padding: "},
+        {"gologolo_margin_text": "Margin: "}
+    ],
+    "recent_work": [
+        {
+            "key": 0,
+            "text": "Google",
+            "fontSize": 60,
+            "textColor": "#121278",
+            "backgroundColor": "#654321",
+            "borderColor": "#abcdef",
+            "borderRadius": 15,
+            "borderThickness": 2,
+            "padding": 20,
+            "margin": 10
+        },
+        {
+            "key": 1,
+            "text": "Microsoft",
+            "fontSize": 16,
+            "textColor": "#13579b",
+            "backgroundColor": "#b97531",
+            "borderColor": "#004488",
+            "borderRadius": 10,
+            "borderThickness": 5,
+            "padding": 5,
+            "margin": 5
+        },
+        {
+            "key": 2,
+            "text": "Debugging Enterprises",
+            "fontSize": 48,
+            "textColor": "#bbeeee",
+            "backgroundColor": "#224400",
+            "borderColor": "#000033",
+            "borderRadius": 1,
+            "borderThickness": 12,
+            "padding": 5,
+            "margin": 10
+        }
+    ]
+}
