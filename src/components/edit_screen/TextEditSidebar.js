@@ -13,7 +13,13 @@ class TextEditSidebar extends Component {
     }
 
     handleUndo = () => {
+        console.log("handleUndo");
         this.props.undoCallback();
+    }
+
+    handleDo = () =>{
+        console.log("handleDo");
+        this.props.doCallback();
     }
 
     handleTextColorChange = (event) => {
@@ -47,7 +53,7 @@ class TextEditSidebar extends Component {
                     <div className="card-content white-text">
                         <button className="waves-effect waves-light btn-small">&#9998;</button>
                         <button className={undoClass} onClick={this.handleUndo}>Undo</button>
-                        <button className={doClass} onClick={this.handleUndo}>Redo</button>
+                        <button className={doClass} onClick={this.handleDo}>Redo</button>
                     </div>
                 </div>
                 <div className="card blue-grey darken-1">

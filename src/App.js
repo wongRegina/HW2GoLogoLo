@@ -174,7 +174,7 @@ class App extends Component {
   }
 
   do =() =>{
-
+    this.tps.doTransaction();
   }
 
   /**
@@ -192,10 +192,12 @@ class App extends Component {
    * can choose to enable or disable the undo button.
    */
   canUndo = () => {
+    console.log("canUndo")
     return this.tps.hasTransactionToUndo();
   }
 
   canDo = () =>{
+    console.log("canDo");
     return this.tps.hasTransactionToRedo();
   }
 
@@ -352,7 +354,8 @@ class App extends Component {
           logo={this.state.currentLogo}                         // DATA NEEDED BY THIS COMPONENT AND ITS DESCENDANTS
           goToHomeCallback={this.goToHomeScreen}                    // NAVIGATION CALLBACK
           changeLogoCallback={this.buildChangeLogoTransaction}  // TRANSACTION CALLBACK
-          undoCallback={this.undo}                        // TRANSACTION CALLBACK                       
+          undoCallback={this.undo}                        // TRANSACTION CALLBACK    
+          doCallback = {this.do}                   
           canUndo={this.canUndo}                          // TRANSACTION CALLBACK
           canDo = {this.canDo}
         />;
