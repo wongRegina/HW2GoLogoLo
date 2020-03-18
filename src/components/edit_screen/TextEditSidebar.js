@@ -14,6 +14,7 @@ class TextEditSidebar extends Component {
             borderRadius: this.props.logo.borderRadius,
             borderWidth: this.props.logo.borderWidth,
             padding: this.props.logo.padding,
+            margin: this.props.logo.margin
         }
     }
 
@@ -66,12 +67,17 @@ class TextEditSidebar extends Component {
         this.setState({ padding: event.target.value }, this.completeUserEditing);
     }
 
+    handleMarginChange = (event) => {
+        console.log("handleMarginChange to " + event.target.value)
+        this.setState({ margin: event.target.value }, this.completeUserEditing);
+    }
 
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize,
-            this.state.backgroundColor, this.state.borderColor, this.state.borderRadius,this.state.borderWidth, this.state.padding);
+        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, 
+            this.state.fontSize, this.state.backgroundColor, this.state.borderColor, this.state.borderRadius,
+            this.state.borderWidth, this.state.padding, this.state.margin);
     }
 
     render() {
@@ -156,9 +162,9 @@ class TextEditSidebar extends Component {
                         <div className="row">
                             <div className="col s4">Margin:</div>
                             <div className="col s8">
-                                <input type="range" min="4" max="144" 
-                                    onChange={this.handleFontSizeChange}
-                                    value={this.props.logo.fontSize} />
+                                <input type="range" min="0" max="20" 
+                                    onChange={this.handleMarginChange}
+                                    value={this.props.logo.margin} />
                             </div>
                         </div>
                     </div>
