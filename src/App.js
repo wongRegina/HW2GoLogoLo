@@ -24,7 +24,8 @@ export const LogoDefaults = {
   TEXT : "goLogoLo Logo",
   TEXT_COLOR : "#FF0000",
   FONT_SIZE : 24,
-  BACKGROUND_COLOR: "#000000"
+  BACKGROUND_COLOR: "#000000",  
+  BORDER_COLOR: "#0038ff"
 }
 
 // App IS THE ROOT REACT COMPONENT
@@ -146,7 +147,8 @@ class App extends Component {
    * to do the actual work of changing the logo. Note that this function will also
    * then add the built transaction to the stack and execute it.
    */
-  buildChangeLogoTransaction = (oldLogo, logoKey, newText, newTextColor, newFontSize, newBackgroundColor) => {
+  buildChangeLogoTransaction = (oldLogo, logoKey, newText, newTextColor, newFontSize, newBackgroundColor,
+      newBorderColor) => {
     // THIS WILL BE THE LOGO AFTER THE CHANGE HAPPENS, NOTE WE BUILD
     // AN ENTIRELY NEW LOGO EACH TIME BUT IT SHOULD KEEP THE SAME KEY
     let postEditLogo = {
@@ -154,7 +156,8 @@ class App extends Component {
       text: newText,
       textColor: newTextColor,
       fontSize: newFontSize,
-      backgroundColor : newBackgroundColor
+      backgroundColor : newBackgroundColor,
+      borderColor : newBorderColor
     };
 
     // NOW BUILD THE TRANSACTION OBJECT
@@ -234,7 +237,8 @@ class App extends Component {
       text: LogoDefaults.TEXT,
       textColor: LogoDefaults.TEXT_COLOR,
       fontSize: LogoDefaults.FONT_SIZE,
-      backgroundColor: LogoDefaults.BACKGROUND_COLOR
+      backgroundColor: LogoDefaults.BACKGROUND_COLOR,
+      borderColor : LogoDefaults.BORDER_COLOR
     }
     return newLogo;
   }
@@ -321,6 +325,7 @@ class App extends Component {
     text += "\ttextColor: " + logoToDisplay.textColor + "\n";
     text += "\tfontSize: " + logoToDisplay.fontSize + "\n";
     text += "\tbackgroundColor: " + logoToDisplay.backgroundColor + "\n";
+    text += "\tborderColor: " + logoToDisplay.borderColor + "\n";
     text += "}";
     return text;
   }

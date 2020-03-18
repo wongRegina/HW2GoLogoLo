@@ -9,7 +9,8 @@ class TextEditSidebar extends Component {
         this.state = {
             fontSize: this.props.logo.fontSize,
             textColor: this.props.logo.textColor,
-            backgroundColor: this.props.logo.backgroundColor
+            backgroundColor: this.props.logo.backgroundColor,
+            borderColor: this.props.logo.borderColor
         }
     }
 
@@ -42,11 +43,16 @@ class TextEditSidebar extends Component {
         this.setState({ backgroundColor: event.target.value }, this.completeUserEditing);
     }
 
+    handleBorderColorChange = (event) => {
+        console.log("handleBorderColorChange to " + event.target.value)
+        this.setState({ borderColor: event.target.value }, this.completeUserEditing);
+    }
+
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
         this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize,
-            this.state.backgroundColor);
+            this.state.backgroundColor, this.state.borderColor);
     }
 
     render() {
@@ -91,7 +97,6 @@ class TextEditSidebar extends Component {
                             <div className="col s4">Background Color:</div>
                             <div className="col s8">
                                 <input type="color"
-                                        // TODO : Fix Handle
                                         onChange={this.handleBackgroundColorChange}
                                         value={this.props.logo.backgroundColor}/>
                             </div>
@@ -100,9 +105,8 @@ class TextEditSidebar extends Component {
                             <div className="col s4">Border Color:</div>
                             <div className="col s8">
                                 <input type="color"
-                                        // TODO : Fix Handle
-                                        onChange={this.handleTextColorChange}
-                                        value={this.props.logo.textColor}
+                                        onChange={this.handleBorderColorChange}
+                                        value={this.props.logo.borderColor}
                                 />
                             </div>
                         </div>
