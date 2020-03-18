@@ -28,7 +28,7 @@ export class EditScreen extends Component {
         // DISPLAY WHERE WE ARE
         console.log("\tEditScreen render");
         return (
-            <div className="container" style={{width: "80%"}}> 
+            <div className="container"> 
                 <Navbar goToHomeCallback={this.props.goToHomeCallback} />
                 <div className="row">
                     <TextEditSidebar
