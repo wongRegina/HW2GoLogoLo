@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 
 class TextEditSidebar extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         // WE'LL MANAGE THE UI CONTROL
         // VALUES HERE
         this.state = {
-            textColor : "#FF0000",
-            fontSize : 24
+            fontSize: this.props.logo.fontSize,
+            textColor: this.props.logo.textColor,
+            backgroundColor: this.props.logo.backgroundColor
         }
     }
 
@@ -36,10 +37,16 @@ class TextEditSidebar extends Component {
         this.setState({ fontSize: event.target.value }, this.completeUserEditing);
     }
 
+    handleBackgroundColorChange = (event) => {
+        console.log("handleBackgroundColorChange to " + event.target.value)
+        this.setState({ backgroundColor: event.target.value }, this.completeUserEditing);
+    }
+
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize);
+        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize,
+            this.state.backgroundColor);
     }
 
     render() {
@@ -62,7 +69,7 @@ class TextEditSidebar extends Component {
                 </div>
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
-                        {/* <span className="card-title">Text</span> */}
+                        <span className="card-title">Text</span>
                         <div className="row">
                             <div className="col s4"> Text Color:</div>
                             <div className="col s8">
@@ -80,18 +87,15 @@ class TextEditSidebar extends Component {
                                     value={this.props.logo.fontSize} />
                             </div>
                         </div>
-                        {/* <span className="card-title">Background</span> */}
                         <div className="row">
                             <div className="col s4">Background Color:</div>
                             <div className="col s8">
                                 <input type="color"
                                         // TODO : Fix Handle
-                                        onChange={this.handleTextColorChange}
-                                        value={this.props.logo.textColor}
-                                />
+                                        onChange={this.handleBackgroundColorChange}
+                                        value={this.props.logo.backgroundColor}/>
                             </div>
                         </div>
-                        {/* <span className="card-title">Border</span> */}
                         <div className="row">
                             <div className="col s4">Border Color:</div>
                             <div className="col s8">
@@ -118,7 +122,6 @@ class TextEditSidebar extends Component {
                                     value={this.props.logo.fontSize} />
                             </div>
                         </div>
-                        {/* <span className="card-title">Padding</span> */}
                         <div className="row">
                             <div className="col s4">Padding:</div>
                             <div className="col s8">
@@ -127,7 +130,6 @@ class TextEditSidebar extends Component {
                                     value={this.props.logo.fontSize} />
                             </div>
                         </div>
-                        {/* <span className="card-title">Margin</span> */}
                         <div className="row">
                             <div className="col s4">Margin:</div>
                             <div className="col s8">
