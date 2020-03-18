@@ -10,7 +10,8 @@ class TextEditSidebar extends Component {
             fontSize: this.props.logo.fontSize,
             textColor: this.props.logo.textColor,
             backgroundColor: this.props.logo.backgroundColor,
-            borderColor: this.props.logo.borderColor
+            borderColor: this.props.logo.borderColor,
+            borderRadius: this.props.logo.borderRadius,
         }
     }
 
@@ -48,11 +49,16 @@ class TextEditSidebar extends Component {
         this.setState({ borderColor: event.target.value }, this.completeUserEditing);
     }
 
+    handleBorderRadiusChange = (event) => {
+        console.log("handleBorderRadiusChange to " + event.target.value)
+        this.setState({ borderRadius: event.target.value }, this.completeUserEditing);
+    }
+
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
         this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize,
-            this.state.backgroundColor, this.state.borderColor);
+            this.state.backgroundColor, this.state.borderColor, this.state.borderRadius);
     }
 
     render() {
@@ -113,9 +119,9 @@ class TextEditSidebar extends Component {
                         <div className="row">
                             <div className="col s4"> Border Radius:</div>
                             <div className="col s8">
-                                <input type="range" min="4" max="144" 
-                                    onChange={this.handleFontSizeChange}
-                                    value={this.props.logo.fontSize} />
+                                <input type="range" min="0" max="20" 
+                                    onChange={this.handleBorderRadiusChange}
+                                    value={this.props.logo.borderRadius} />
                             </div>
                         </div>
                         <div className="row">
