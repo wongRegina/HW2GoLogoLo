@@ -19,8 +19,9 @@ body {
 }
 
 #home_banner_container {
-  background-image: linear-gradient(to bottom,         
-  #b8b808, #636723);
+  /* background-image: linear-gradient(to bottom,         
+  "hsl(357.7, 79%, 68.2%)", #636723); */
+  background-color: #ee6e73;
   color: white;
   font-size: 48pt;
   border-color: black;
