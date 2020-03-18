@@ -23,14 +23,14 @@ class Navbar extends React.Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div className="nav-wrapper" style={{marginLeft: "20pt"}}>
           <div  className='brand-logo' 
-                style={ {cursor: "pointer"} }
+                style={ {cursor: "pointer", fontSize: "xxx-large"} }
                 onClick={this.handleGoHome}>
             goLogoLo
           </div>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li style={ {cursor: "pointer"} }>&#128465;</li>
+            <li style={ {cursor: "pointer", fontSize: "xxx-large"} }>&#128465;</li>
           </ul>
         </div>
       </nav>
