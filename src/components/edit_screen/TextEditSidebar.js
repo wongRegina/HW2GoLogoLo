@@ -12,6 +12,7 @@ class TextEditSidebar extends Component {
             backgroundColor: this.props.logo.backgroundColor,
             borderColor: this.props.logo.borderColor,
             borderRadius: this.props.logo.borderRadius,
+            borderWidth: this.props.logo.borderWidth,
         }
     }
 
@@ -54,11 +55,16 @@ class TextEditSidebar extends Component {
         this.setState({ borderRadius: event.target.value }, this.completeUserEditing);
     }
 
+    handleborderWidthChange = (event) => {
+        console.log("handleborderWidthChange to " + event.target.value)
+        this.setState({ borderWidth: event.target.value }, this.completeUserEditing);
+    }
+
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
         this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize,
-            this.state.backgroundColor, this.state.borderColor, this.state.borderRadius);
+            this.state.backgroundColor, this.state.borderColor, this.state.borderRadius,this.state.borderWidth);
     }
 
     render() {
@@ -125,11 +131,11 @@ class TextEditSidebar extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col s4">Border Thickness:</div>
+                            <div className="col s4">Border Width:</div>
                             <div className="col s8">
-                                <input type="range" min="4" max="144" 
-                                    onChange={this.handleFontSizeChange}
-                                    value={this.props.logo.fontSize} />
+                                <input type="range" min="0" max="50" 
+                                    onChange={this.handleborderWidthChange}
+                                    value={this.props.logo.borderWidth} />
                             </div>
                         </div>
                         <div className="row">

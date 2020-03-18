@@ -26,7 +26,7 @@
         {"gologolo_backgroundColor_text": "Background Color: "},
         {"gologolo_borderColor_text": "Border Color: "},
         {"gologolo_borderRadius_text": "Border Radius: "},
-        {"gologolo_borderThickness_text": "Border Thickness: "},
+        {"gologolo_borderWidth_text": "Border Thickness: "},
         {"gologolo_padding_text": "Padding: "},
         {"gologolo_margin_text": "Margin: "}
     ],
@@ -39,7 +39,7 @@
             "backgroundColor": "#654321",
             "borderColor": "#abcdef",
             "borderRadius": 15,
-            "borderThickness": 2,
+            "borderWidth": 2,
             "padding": 20,
             "margin": 10
         },
@@ -51,7 +51,7 @@
             "backgroundColor": "#b97531",
             "borderColor": "#004488",
             "borderRadius": 10,
-            "borderThickness": 5,
+            "borderWidth": 5,
             "padding": 5,
             "margin": 5
         },
@@ -63,7 +63,7 @@
             "backgroundColor": "#224400",
             "borderColor": "#000033",
             "borderRadius": 1,
-            "borderThickness": 12,
+            "borderWidth": 12,
             "padding": 5,
             "margin": 10
         }

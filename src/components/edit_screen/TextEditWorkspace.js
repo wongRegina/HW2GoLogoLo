@@ -10,10 +10,12 @@ class TextEditWorkspace extends Component {
                 backgroundColor: this.props.logo.backgroundColor,
                 borderColor: this.props.logo.borderColor,
                 borderRadius: this.props.logo.borderRadius + "pt",
+                borderWidth: this.props.logo.borderWidth + "pt",
+                borderStyle: "solid"
             }
         }
         return (
-            <div className="col s8"
+            <div className="col"
                 style={ styles.container }>
                 {this.props.logo.text}
             </div>
