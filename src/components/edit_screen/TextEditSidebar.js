@@ -165,7 +165,7 @@ class TextEditSidebar extends Component {
                         </div>
                         {/* BORDER WIDTH */}
                         <div className="row">
-                            <div className="col s7">Border Width:</div>
+                            <div className="col s7">Border Thickness:</div>
                             <div className="col s5">{this.props.logo.borderWidth + " pt"}</div>
                         </div>
                         <div className="row">
