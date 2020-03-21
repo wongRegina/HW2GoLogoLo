@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './css/gologolo_style.css';
 import App from './App';
 import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/js/materialize.min.js'
 
 // START BY CHECKING TO SEE IF OUR LOGOS
 // ARE IN LOCAL STORAGE. IF THEY ARE NOT,

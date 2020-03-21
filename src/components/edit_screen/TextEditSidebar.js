@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Modal} from 'react-materialize';
 
 class TextEditSidebar extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class TextEditSidebar extends Component {
             borderWidth: this.props.logo.borderWidth,
             padding: this.props.logo.padding,
             margin: this.props.logo.margin
-        }
+        };
     }
 
     handleUndo = () => {
@@ -26,6 +27,11 @@ class TextEditSidebar extends Component {
     handleDo = () =>{
         console.log("handleDo");
         this.props.doCallback();
+    }
+
+    handleEditTextModal = (event) =>{
+        console.log("handleEditTextModal");
+        return this.modalButton.click()
     }
 
     handleChangeText = () =>{
@@ -93,7 +99,9 @@ class TextEditSidebar extends Component {
             <div className="card-panel col s4">
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
-                        <button className="waves-effect waves-light btn-small" onClick = {this.changeText}>&#9998;</button>
+                        <Modal
+                            trigger = {<button className="waves-effect waves-light btn-small">Edit Text &#9998;</button>}>
+                        </Modal>
                         <button className={undoClass} onClick={this.handleUndo}>Undo</button>
                         <button className={doClass} onClick={this.handleDo}>Redo</button>
                     </div>
