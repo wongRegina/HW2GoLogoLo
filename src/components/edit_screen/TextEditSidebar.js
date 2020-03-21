@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Modal} from 'react-materialize';
+import {Modal, Button, TextInput} from 'react-materialize';
 
 class TextEditSidebar extends Component {
     constructor(props) {
@@ -27,11 +27,6 @@ class TextEditSidebar extends Component {
     handleDo = () =>{
         console.log("handleDo");
         this.props.doCallback();
-    }
-
-    handleEditTextModal = (event) =>{
-        console.log("handleEditTextModal");
-        return this.modalButton.click()
     }
 
     handleChangeText = () =>{
@@ -100,7 +95,17 @@ class TextEditSidebar extends Component {
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                         <Modal
+                            small
+                            actions={[
+                                <div>
+                                    <Button flat modal="close" node="button" waves="green">Cancel</Button>
+                                    <button className="waves-effect waves-light btn-small" onClick={this.handleChangeText}>Enter</button>
+                                </div>
+                            ]}
+                            header="Edit Text"
                             trigger = {<button className="waves-effect waves-light btn-small">Edit Text &#9998;</button>}>
+                                Enter a name for your logo:
+                            <TextInput defaultValue={this.props.logo.text} onChange={(e) => this.setState({[e.target.name]: e.target.value})}/>
                         </Modal>
                         <button className={undoClass} onClick={this.handleUndo}>Undo</button>
                         <button className={doClass} onClick={this.handleDo}>Redo</button>
