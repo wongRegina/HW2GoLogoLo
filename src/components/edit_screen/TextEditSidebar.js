@@ -32,19 +32,19 @@ class TextEditSidebar extends Component {
     }
 
     handleChangeText = (event) =>{
-        console.log("handleChangeText: " + this.textUpdate);
-        let text = (this.textUpdate).replace(" ","\xa0");
+        console.log("handleChangeText: " + this.state.textUpdate);
+        let text = (this.state.textUpdate).replace(" ","\xa0");
         this.setState({ text: text }, this.completeUserEditing);
     }
 
     editingText= (event) =>{
-        // return this.state.textUpdate = event.target.value;
-        this.textUpdate=event.target.value;
+        // this.state.textUpdate=event.target.value;
+        this.setState({textUpdate:event.target.value});
     }
 
     cancelText = () =>{
-        // this.state.textUpdate = this.props.logo.text;
-        this.textUpdate=this.props.logo.text;
+        // this.state.textUpdate=this.props.logo.text;
+        this.setState({textUpdate:this.props.logo.text});
     }
 
     handleTextColorChange = (event) => {
@@ -94,7 +94,7 @@ class TextEditSidebar extends Component {
             this.state.fontSize, this.state.backgroundColor, this.state.borderColor, this.state.borderRadius,
             this.state.borderWidth, this.state.padding, this.state.margin);
     }
-    
+
     render() {
         let undoDisabled = !this.props.canUndo();
         let doDisabled = !this.props.canDo();
@@ -121,7 +121,7 @@ class TextEditSidebar extends Component {
                             trigger = {<button className="waves-effect waves-light btn-small">Edit Text &#9998;</button>}>
                                 Enter a name for your logo:
                             <TextInput 
-                                defaultValue={this.props.logo.text} 
+                                value={this.state.textUpdate} 
                                 editable = "true"
                                 onChange = {this.editingText}
                             />
