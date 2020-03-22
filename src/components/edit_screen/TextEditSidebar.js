@@ -33,7 +33,7 @@ class TextEditSidebar extends Component {
 
     handleChangeText = (event) =>{
         console.log("handleChangeText: " + this.state.textUpdate);
-        let text = (this.state.textUpdate).replace(" ","\xa0");
+        let text = (this.state.textUpdate).replace(/ /g,"\xa0");
         this.setState({ text: text }, this.completeUserEditing);
     }
 
@@ -100,10 +100,14 @@ class TextEditSidebar extends Component {
         let doDisabled = !this.props.canDo();
         let undoClass = "waves-effect waves-light btn-small";
         let doClass = "waves-effect waves-light btn-small";
+        let enterModal = "modal-close waves-effect waves-light btn-small";
         if (undoDisabled)
             undoClass += " disabled";
         if(doDisabled)
             doClass += " disabled";
+        if(this.state.textUpdate.trim() === "" || this.state.textUpdate === this.props.logo.text){
+            enterModal += " disabled";
+        }
         return (
             <div className="card-panel col s4">
                 <div className="card blue-grey darken-1">
@@ -113,7 +117,7 @@ class TextEditSidebar extends Component {
                             actions={[
                                 <div>
                                     <Button flat modal="close" node="button" waves="green" onClick={this.cancelText}>Close</Button>
-                                    <button className="modal-close waves-effect waves-light btn-small" onClick={this.handleChangeText} >Enter</button>
+                                    <button className= {enterModal} onClick={this.handleChangeText} >Enter</button>
                                 </div>
                             ]}
                             data-backdrop="static"
