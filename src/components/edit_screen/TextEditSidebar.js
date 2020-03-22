@@ -8,6 +8,8 @@ class TextEditSidebar extends Component {
         // WE'LL MANAGE THE UI CONTROL
         // VALUES HERE
         this.state = {
+            textUpdate: this.props.logo.text,
+            text: this.props.logo.text,
             fontSize: this.props.logo.fontSize,
             textColor: this.props.logo.textColor,
             backgroundColor: this.props.logo.backgroundColor,
@@ -29,8 +31,13 @@ class TextEditSidebar extends Component {
         this.props.doCallback();
     }
 
-    handleChangeText = () =>{
-        console.log("handleChangeText: ")
+    handleChangeText = (event) =>{
+        // console.log("handleChangeText: " + event.target.value);
+        // let text = (event.target.value).replace(" ","\xa0");
+        // this.setState({ text: text }, this.completeUserEditing);
+        console.log("handleChangeText: " + this.textUpdate);
+        let text = (this.textUpdate).replace(" ","\xa0");
+        this.setState({ text: text }, this.completeUserEditing);
     }
 
     handleTextColorChange = (event) => {
@@ -76,9 +83,17 @@ class TextEditSidebar extends Component {
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, 
+        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.state.text, this.state.textColor, 
             this.state.fontSize, this.state.backgroundColor, this.state.borderColor, this.state.borderRadius,
             this.state.borderWidth, this.state.padding, this.state.margin);
+    }
+
+    editingText= (event) =>{
+        this.textUpdate = event.target.value;
+    }
+
+    cancelText = (event) =>{
+        this.textUpdate = this.props.logo.text;
     }
 
     render() {
@@ -95,17 +110,23 @@ class TextEditSidebar extends Component {
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                         <Modal
-                            small
+                            // small
                             actions={[
                                 <div>
-                                    <Button flat modal="close" node="button" waves="green">Cancel</Button>
-                                    <button className="waves-effect waves-light btn-small" onClick={this.handleChangeText}>Enter</button>
+                                    <Button flat modal="close" node="button" waves="green" onClick={this.cancelText}>Close</Button>
+                                    <button className="modal-close waves-effect waves-light btn-small" onClick={this.handleChangeText} >Enter</button>
+                                    {/* <Button flat modal="submit" node="button" waves="green" onClick={this.handleChangeText()}>Enter</Button> */}
                                 </div>
                             ]}
                             header="Edit Text"
                             trigger = {<button className="waves-effect waves-light btn-small">Edit Text &#9998;</button>}>
                                 Enter a name for your logo:
-                            <TextInput defaultValue={this.props.logo.text} onChange={(e) => this.setState({[e.target.name]: e.target.value})}/>
+                            <TextInput defaultValue={this.props.logo.text} editable = "true"
+                                onChange = {this.editingText}
+                                // onChange = {this.handleChangeText}
+                                // onChange={this.handleChangeText}
+                                // value={this.props.logo.text}
+                            />
                         </Modal>
                         <button className={undoClass} onClick={this.handleUndo}>Undo</button>
                         <button className={doClass} onClick={this.handleDo}>Redo</button>
