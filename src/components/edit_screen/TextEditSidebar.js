@@ -89,11 +89,14 @@ class TextEditSidebar extends Component {
     }
 
     editingText= (event) =>{
-        this.textUpdate = event.target.value;
+        // return this.state.textUpdate = event.target.value;
+        this.textUpdate=event.target.value;
+        
     }
 
-    cancelText = (event) =>{
-        this.textUpdate = this.props.logo.text;
+    cancelText = () =>{
+        // this.state.textUpdate = this.props.logo.text;
+        this.textUpdate=this.props.logo.text;
     }
 
     render() {
@@ -110,22 +113,21 @@ class TextEditSidebar extends Component {
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                         <Modal
-                            // small
+                            options={{ dismissible: false }}
                             actions={[
                                 <div>
                                     <Button flat modal="close" node="button" waves="green" onClick={this.cancelText}>Close</Button>
                                     <button className="modal-close waves-effect waves-light btn-small" onClick={this.handleChangeText} >Enter</button>
-                                    {/* <Button flat modal="submit" node="button" waves="green" onClick={this.handleChangeText()}>Enter</Button> */}
                                 </div>
                             ]}
+                            data-backdrop="static"
                             header="Edit Text"
                             trigger = {<button className="waves-effect waves-light btn-small">Edit Text &#9998;</button>}>
                                 Enter a name for your logo:
-                            <TextInput defaultValue={this.props.logo.text} editable = "true"
+                            <TextInput 
+                                defaultValue={this.props.logo.text} 
+                                editable = "true"
                                 onChange = {this.editingText}
-                                // onChange = {this.handleChangeText}
-                                // onChange={this.handleChangeText}
-                                // value={this.props.logo.text}
                             />
                         </Modal>
                         <button className={undoClass} onClick={this.handleUndo}>Undo</button>
