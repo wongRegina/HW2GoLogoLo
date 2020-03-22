@@ -32,12 +32,19 @@ class TextEditSidebar extends Component {
     }
 
     handleChangeText = (event) =>{
-        // console.log("handleChangeText: " + event.target.value);
-        // let text = (event.target.value).replace(" ","\xa0");
-        // this.setState({ text: text }, this.completeUserEditing);
         console.log("handleChangeText: " + this.textUpdate);
         let text = (this.textUpdate).replace(" ","\xa0");
         this.setState({ text: text }, this.completeUserEditing);
+    }
+
+    editingText= (event) =>{
+        // return this.state.textUpdate = event.target.value;
+        this.textUpdate=event.target.value;
+    }
+
+    cancelText = () =>{
+        // this.state.textUpdate = this.props.logo.text;
+        this.textUpdate=this.props.logo.text;
     }
 
     handleTextColorChange = (event) => {
@@ -87,18 +94,7 @@ class TextEditSidebar extends Component {
             this.state.fontSize, this.state.backgroundColor, this.state.borderColor, this.state.borderRadius,
             this.state.borderWidth, this.state.padding, this.state.margin);
     }
-
-    editingText= (event) =>{
-        // return this.state.textUpdate = event.target.value;
-        this.textUpdate=event.target.value;
-        
-    }
-
-    cancelText = () =>{
-        // this.state.textUpdate = this.props.logo.text;
-        this.textUpdate=this.props.logo.text;
-    }
-
+    
     render() {
         let undoDisabled = !this.props.canUndo();
         let doDisabled = !this.props.canDo();
