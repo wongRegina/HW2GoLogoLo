@@ -101,12 +101,20 @@ class TextEditSidebar extends Component {
         let undoClass = "waves-effect waves-light btn-small";
         let doClass = "waves-effect waves-light btn-small";
         let enterModal = "modal-close waves-effect waves-light btn-small";
+        let textMessage1 = "A logo name cannot be all white space"
+        let textMessage2 = "Edit the logo name"
+        let messageToShow = "";
         if (undoDisabled)
             undoClass += " disabled";
         if(doDisabled)
             doClass += " disabled";
-        if(this.state.textUpdate.trim() === "" || this.state.textUpdate === this.props.logo.text){
+        if(this.state.textUpdate.trim() === ""){
             enterModal += " disabled";
+            messageToShow = textMessage1
+        }
+        else if(this.state.textUpdate === this.props.logo.text){
+            enterModal += " disabled";
+            messageToShow = textMessage2
         }
         return (
             <div className="card-panel col s4">
@@ -129,6 +137,8 @@ class TextEditSidebar extends Component {
                                 editable = "true"
                                 onChange = {this.editingText}
                             />
+                            {/* <Button flat disabled = "true" class = "red-text d50000 red accent-4"  node="button"> {messageToShow} </Button> */}
+                            <span class="red-text">{messageToShow}</span>
                         </Modal>
                         <button className={undoClass} onClick={this.handleUndo}>Undo</button>
                         <button className={doClass} onClick={this.handleDo}>Redo</button>
