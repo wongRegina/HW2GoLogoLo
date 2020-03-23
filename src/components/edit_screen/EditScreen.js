@@ -48,7 +48,11 @@ export class EditScreen extends Component {
         console.log("\tEditScreen render");
         return (
             <div className="container"> 
-                <Navbar goToHomeCallback={this.props.goToHomeCallback} />
+                <Navbar 
+                    goToHomeCallback={this.props.goToHomeCallback} 
+                    deleteLogoCallback={this.props.deleteLogoCallback}
+                    logo={this.props.logo}
+                />
                 <div className="row">
                     <TextEditSidebar
                         logo={this.props.logo}

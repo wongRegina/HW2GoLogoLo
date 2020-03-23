@@ -1,8 +1,10 @@
 import React from 'react'
+// import { Modal } from 'materialize-css';
+import {Modal, Button} from 'react-materialize';
 
 class Navbar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     console.log("Navbar constructed");
   }
@@ -20,6 +22,11 @@ class Navbar extends React.Component {
     this.props.goToHomeCallback();
   }
 
+  handleDelete = (event) =>{
+    console.log("handleDelete: " + this.props.logo.key);
+    this.props.deleteLogoCallback(this.props.logo.key);
+  }
+
   render() {
     return (
       <nav>
@@ -30,7 +37,21 @@ class Navbar extends React.Component {
             goLogoLo
           </div>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li style={ {cursor: "pointer", fontSize: "xxx-large"} }>&#128465;</li>
+            <Modal
+              options={{ dismissible: false }}
+              actions={[
+                  <div>
+                      {/* <Button flat modal="close" node="button" waves="green">no</Button> */}
+                      <button className = "modal-close waves-effect waves-light btn-small">No</button>
+                      <button className = "modal-close waves-effect waves-light btn-small" onClick={this.handleDelete}>Yes</button>
+                      {/* <button  onClick={this.handleChangeText} >Enter</button> */}
+                  </div>
+              ]}
+              header="Delete Logo"
+              trigger = {<Button flat style={{ fontSize: 40 }}>&#128465;</Button>}
+            >
+              Do you want to delete your logo?
+            </Modal>
           </ul>
         </div>
       </nav>
